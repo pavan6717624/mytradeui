@@ -9,7 +9,7 @@ export class FuturesService {
   constructor(private http: HttpClient) { }
 
   getData() {
-    return this.http.get('https://takeoff-pavan.herokuapp.com/MYTRADE/getFutureOIs')
+    return this.http.get('http://localhost:8081/MYTRADE/getFutureOIs')
   }
 
   checkData() {
