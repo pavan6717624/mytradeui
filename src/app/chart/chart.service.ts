@@ -9,7 +9,7 @@ export class ChartService {
 
 
   getData() {
-    return this.http.get('https://srinivas-app-23722fde5f1f.herokuapp.com/MYTRADE/getLastPrice')
+    return this.http.get('http://localhost:8081/MYTRADE/getLastPrice')
   }
 
 

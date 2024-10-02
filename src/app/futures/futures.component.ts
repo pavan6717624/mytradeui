@@ -8,6 +8,21 @@ class Futures {
   timestamp: string = '';
 }
 
+class ZData
+{
+  price: number=0;
+	instrument: number=0;
+	call: string='';
+	
+	close:number[]=[];
+   open:number[]=[];
+   high:number[]=[];
+    low:number[]=[];
+     oi:number[]=[];
+     vol:number[]=[];
+	 date: string[]=[];
+}
+
 @Component({
   selector: 'app-futures',
   templateUrl: './futures.component.html',
@@ -19,85 +34,69 @@ export class FuturesComponent implements OnInit {
   name: string[] = [];
   public chart: Chart[] = [];
   dat: any;
+  data: ZData[] = [];
+  size:number=0;
 
   constructor(public futuresService: FuturesService) { }
-
   ngOnInit(): void {
-    // this.futuresService.getData().subscribe(
-    //   (res: any) => {
+   
+    this.futuresService.getData().subscribe(
+      (res:any) => {
+        
+        this.data=res;
+        this.size=this.data.length;
+        console.log(JSON.stringify(this.data)+" "+this.data.length);
 
-    //     this.map1 = res;
-    //     console.log(this.map1);
-    //     console.log(this.map1[0]);
-    //     console.log(this.map1[0][0].symbol);
-    //     console.log(this.map1[0].map((o:any)=>o.timestamp));
+       for(var i=0;i<this.data.length;i+=2)
+        {
+         this.name[i]=this.data[i].price+"";
+        this.chart[i] = new Chart("MyChart"+i, {
+          type: 'line', //this denotes tha type of chart
+          options: {
+            aspectRatio:2.5,
+            plugins: {
+                title: {
+                    display: true,
+                    text: this.data[i].price+"",
+                    
+                    padding: {
+                        top: 10,
+                        bottom: 30
+                    }
+                }
+            }
+          },
+    
+          data: {// values on X-Axis
+            labels: this.data[i].date,
+             datasets: [
+              {
+                label: "CE",
+                data: this.data[i].oi,
+                backgroundColor: 'blue'
+              },
+              {
+                label: "PE",
+                data: this.data[i+1].oi,
+                backgroundColor: 'red'
+              }  ,
+              // {
+              //   label: "PRICE",
+              //   data: this.data[i].data.price,
+              //   backgroundColor: 'yellow'
+              // }  
+            ]
+          },
+        
+          
+        });
 
- 
-
-    //     for (var i=0;i<this.map1.length;i++) {
-    //       this.name[i] = this.map1[i][0].symbol;
-    //       var key=this.name[i];
-    //       // let labels: any, data: any;
-    //       // let labelsData = [], ddata = [];
-    //       // if (key) {
-    //       //   labels = this.map1[i].map((o:any)=>o.timestamp);
-    //       //   data = this.map1[i].map((o:any) => o.open_int);
-    //       //   for (var i = 0; i < labels?.length; i++) {
-    //       //     labelsData[i] = labels[i];
-    //       //   }
-    //       //   for (var i = 0; i < data?.length; i++) {
-    //       //     ddata[i] = data[i];
-    //       //   }
-
-
-    //       // }
-
-    //       this.chart[i] = new Chart("MyChart" + i, {
-    //         type: 'line', //this denotes tha type of chart
-    //         options: {
-    //           aspectRatio: 2.5,
-    //           plugins: {
-    //             title: {
-    //               display: true,
-    //               text: key,
-
-    //               padding: {
-    //                 top: 10,
-    //                 bottom: 30
-    //               }
-    //             }
-    //           }
-    //         },
-
-    //         data: {// values on X-Axis
-    //           labels: this.map1[i].map((o:any)=>o.timestamp),
-    //           datasets: [
-    //             {
-    //               label: "CE",
-    //               data: this.map1[i].map((o:any) => o.open_int),
-    //               backgroundColor: 'blue'
-    //             },
-
-    //           ]
-    //         },
-
-
-    //       });
-    //       this.dat = new Date();
-    //     }
-
-    //     console.log(this.chart);
-
-    //   },
-    //   (err: any) => {
-    //     console.log(err);
-    //   }
-    // );
-
-
-    this.futuresService.checkData().subscribe(
-      (res)=> console.log(res),
-      (err)=> console.log(err)
-    )
+      }
+      this.dat=new Date();
+      },
+      (err:any) => {
+        console.log(err);
+      }
+    );
   }
 }

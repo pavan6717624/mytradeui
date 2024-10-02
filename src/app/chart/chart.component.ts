@@ -37,7 +37,7 @@ export class ChartComponent implements OnInit {
         
         this.data=res;
         this.size=this.data.length;
-        console.log(this.data+" "+this.data.length);
+        console.log(JSON.stringify(this.data)+" "+this.data.length);
 
        for(var i=0;i<this.data.length;i++)
         {
