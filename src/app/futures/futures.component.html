@@ -1,10 +1,12 @@
-<div class="chart-container">
-    <span style="text-align:center"> {{ name[0] }}
+date is {{dat}}
+
+<div class="grid chart-container">
+    <div class="col-6" style="text-align:center"> {{ name[0] }}
         <canvas id="MyChart0">{{ chart[0] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[1] }}
+    </div>
+    <div class="col-6" style="text-align:center"> {{ name[1] }}
         <canvas id="MyChart1">{{ chart[1] }}</canvas>
-    </span>
+    </div>
     <span style="text-align:center"> {{ name[2] }}
         <canvas id="MyChart2">{{ chart[2] }}</canvas>
     </span>
