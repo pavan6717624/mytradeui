@@ -9,7 +9,7 @@ export class FuturesService {
   constructor(private http: HttpClient) { }
 
   getData() {
-    return this.http.get('https://take-app-4afe487d41cd.herokuapp.com//ZERODHA/getData?instrument=256265')
+    return this.http.get('https://take-app-4afe487d41cd.herokuapp.com/ZERODHA/getData?instrument=256265')
   }
 
   checkData() {
