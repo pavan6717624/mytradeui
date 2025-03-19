@@ -6,10 +6,32 @@ import { Injectable } from '@angular/core';
 })
 export class FuturesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+
+    this.getPosition().then(pos=>
+      {
+         console.log(`Positon: ${pos.lng} ${pos.lat}`);
+      });
+
+  }
+
+  getPosition(): Promise<any>
+  {
+    return new Promise((resolve, reject) => {
+
+      navigator.geolocation.getCurrentPosition(resp => {
+
+          resolve({lng: resp.coords.longitude, lat: resp.coords.latitude});
+        },
+        err => {
+          reject(err);
+        });
+    });
+
+  }
 
   getData() {
-    return this.http.get('https://take-app-4afe487d41cd.herokuapp.com/ZERODHA/getData?instrument=256265')
+    return this.http.get('https://heidigi-app-38b2318c83b0.herokuapp.com/ZERODHA/getData?instrument=779521') //256265
   }
 
   checkData() {
