@@ -8,10 +8,10 @@ export class FuturesService {
 
   constructor(private http: HttpClient) { 
 
-    this.getPosition().then(pos=>
-      {
-         console.log(`Positon: ${pos.lng} ${pos.lat}`);
-      });
+    // this.getPosition().then(pos=>
+    //   {
+    //      console.log(`Positon: ${pos.lng} ${pos.lat}`);
+    //   });
 
   }
 
@@ -30,8 +30,22 @@ export class FuturesService {
 
   }
 
+ 
+  //NIFTY = 256265
+  //SENSEX = 265
+ 
+
+  //RELIANCE=738561
+  //HDFCBANK=341249
+  //ICICIBANK=1270529
+  //SBIN = 779521
+  //INFY = 408065
+
+  
+
+
   getData() {
-    return this.http.get('https://heidigi-app-38b2318c83b0.herokuapp.com/ZERODHA/getData?instrument=779521') //256265
+    return this.http.get('http://localhost:8081/ZERODHA/getData?instrument=1270529') 
   }
 
   checkData() {
