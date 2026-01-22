@@ -44,8 +44,8 @@ export class FuturesService {
   
 
 
-  getData() {
-    return this.http.get('http://localhost:8081/ZERODHA/getData?instrument=1270529') 
+  getData(instrument: string) {
+    return this.http.get('http://localhost:8081/ZERODHA/getData?instrument='+instrument) 
   }
 
   checkData() {

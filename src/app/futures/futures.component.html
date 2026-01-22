@@ -14,7 +14,32 @@
 
 </div>
 
+  <!--//NIFTY = 256265
+  //SENSEX = 265
+ 
 
+  //RELIANCE=738561
+  //HDFCBANK=341249
+  //ICICIBANK=1270529
+  //SBIN = 779521
+  //INFY = 408065-->
+
+
+<div class="controls" style="text-align:center; margin:12px 0;">
+    <label style="margin-right:8px">Select Instrument:</label>
+    <select [(ngModel)]="instrument" (ngModelChange)="onInstrumentChange($event)">
+        <option value="265">SENSEX</option>
+        <option value="256265">NIFTY</option>
+
+        <option value="738561">RELIANCE</option>
+        <option value="341249">HDFCBANK</option>
+        <option value="1270529">ICICIBANK</option>
+
+        <option value="779521">SBIN</option>
+        <option value="408065">INFY</option>
+
+    </select>
+</div>
 
 <div class="grid chart-container">
     <div class="col-6" style="text-align:center"> {{ name[0] }}
