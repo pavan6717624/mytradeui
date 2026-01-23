@@ -25,7 +25,7 @@
   //INFY = 408065-->
 
 
-<div class="controls" style="text-align:center; margin:12px 0;">
+<div class="controls" style="text-align:center; margin:12px 0; position:sticky; top:0; background:#fff; z-index:1000; padding:8px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.06);">
     <label style="margin-right:8px">Select Instrument:</label>
     <select [(ngModel)]="instrument" (ngModelChange)="onInstrumentChange($event)">
         <option value="265">SENSEX</option>
@@ -39,6 +39,10 @@
         <option value="408065">INFY</option>
 
     </select>
+        <button style="margin-left:12px; padding:6px 12px; cursor:pointer;" (click)="fetchData()" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Refresh</span>
+            <span *ngIf="isLoading">Refreshing...</span>
+        </button>
 </div>
 
 <div class="grid chart-container">
@@ -196,155 +200,6 @@
     <span style="text-align:center"> {{ name[50] }}
         <canvas id="MyChart50">{{ chart[50] }}</canvas>
     </span>
-    <span style="text-align:center"> {{ name[51] }}
-        <canvas id="MyChart51">{{ chart[51] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[52] }}
-        <canvas id="MyChart52">{{ chart[52] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[53] }}
-        <canvas id="MyChart53">{{ chart[53] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[54] }}
-        <canvas id="MyChart54">{{ chart[54] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[55] }}
-        <canvas id="MyChart55">{{ chart[55] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[56] }}
-        <canvas id="MyChart56">{{ chart[56] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[57] }}
-        <canvas id="MyChart57">{{ chart[57] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[58] }}
-        <canvas id="MyChart58">{{ chart[58] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[59] }}
-        <canvas id="MyChart59">{{ chart[59] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[60] }}
-        <canvas id="MyChart60">{{ chart[60] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[61] }}
-        <canvas id="MyChart61">{{ chart[61] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[62] }}
-        <canvas id="MyChart62">{{ chart[62] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[63] }}
-        <canvas id="MyChart63">{{ chart[63] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[64] }}
-        <canvas id="MyChart64">{{ chart[64] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[65] }}
-        <canvas id="MyChart65">{{ chart[65] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[66] }}
-        <canvas id="MyChart66">{{ chart[66] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[67] }}
-        <canvas id="MyChart67">{{ chart[67] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[68] }}
-        <canvas id="MyChart68">{{ chart[68] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[69] }}
-        <canvas id="MyChart69">{{ chart[69] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[70] }}
-        <canvas id="MyChart70">{{ chart[70] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[71] }}
-        <canvas id="MyChart71">{{ chart[71] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[72] }}
-        <canvas id="MyChart72">{{ chart[72] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[73] }}
-        <canvas id="MyChart73">{{ chart[73] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[74] }}
-        <canvas id="MyChart74">{{ chart[74] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[75] }}
-        <canvas id="MyChart75">{{ chart[75] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[76] }}
-        <canvas id="MyChart76">{{ chart[76] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[77] }}
-        <canvas id="MyChart77">{{ chart[77] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[78] }}
-        <canvas id="MyChart78">{{ chart[78] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[79] }}
-        <canvas id="MyChart79">{{ chart[79] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[80] }}
-        <canvas id="MyChart80">{{ chart[80] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[81] }}
-        <canvas id="MyChart81">{{ chart[81] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[82] }}
-        <canvas id="MyChart82">{{ chart[82] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[83] }}
-        <canvas id="MyChart83">{{ chart[83] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[84] }}
-        <canvas id="MyChart84">{{ chart[84] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[85] }}
-        <canvas id="MyChart85">{{ chart[85] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[86] }}
-        <canvas id="MyChart86">{{ chart[86] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[87] }}
-        <canvas id="MyChart87">{{ chart[87] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[88] }}
-        <canvas id="MyChart88">{{ chart[88] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[89] }}
-        <canvas id="MyChart89">{{ chart[89] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[90] }}
-        <canvas id="MyChart90">{{ chart[90] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[91] }}
-        <canvas id="MyChart91">{{ chart[91] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[92] }}
-        <canvas id="MyChart92">{{ chart[92] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[93] }}
-        <canvas id="MyChart93">{{ chart[93] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[94] }}
-        <canvas id="MyChart94">{{ chart[94] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[95] }}
-        <canvas id="MyChart95">{{ chart[95] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[96] }}
-        <canvas id="MyChart96">{{ chart[96] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[97] }}
-        <canvas id="MyChart97">{{ chart[97] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[98] }}
-        <canvas id="MyChart98">{{ chart[98] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[99] }}
-        <canvas id="MyChart99">{{ chart[99] }}</canvas>
-    </span>
-    <span style="text-align:center"> {{ name[100] }}
-        <canvas id="MyChart100">{{ chart[100] }}</canvas>
-    </span>
+   
 
 </div>

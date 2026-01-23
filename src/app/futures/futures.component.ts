@@ -39,6 +39,7 @@ export class FuturesComponent implements OnInit, OnDestroy {
   data: ZData[] = [];
   size:number=0;
   instrument: string = '265';
+  public isLoading: boolean = false;
 
   onInstrumentChange($event: any) {
  
@@ -64,10 +65,10 @@ this.fetchData();
 
 
   fetchData() {
+    this.isLoading = true;
 
     this.futuresService.getData(this.instrument).subscribe(
       (res:any) => {
-        
         this.data=res;
         this.size=this.data.length;
         console.log(JSON.stringify(this.data)+" "+this.data.length);
@@ -114,22 +115,18 @@ this.fetchData();
                 data: this.data[i+1].oi,
                 backgroundColor: 'red'
               }  ,
-              // {
-              //   label: "PRICE",
-              //   data: this.data[i].data.price,
-              //   backgroundColor: 'yellow'
-              // }  
             ]
           },
         
-          
         });
 
       }
       this.dat=new Date();
+      this.isLoading = false;
       },
       (err:any) => {
         console.log(err);
+        this.isLoading = false;
       }
     );
 
