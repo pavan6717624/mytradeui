@@ -1,31 +1,8 @@
-<div class="sticky" style="width:100%; text-align: center;">
-
-    <!-- date is {{dat}} -->
-
-    <Table style="width:100%; text-align: center;">
-        <tr>
-            <Td>Dont jump into the Trade</Td>
-            <Td>  Dont Over Trade</Td>
-            <Td>Be with your senses</Td>
-            <Td>Be with your Stop Loss</Td>
-        </tr>
-    </Table>
+<div class="controls"
+    style="text-align:center; margin:12px 0; position:sticky; top:0; background:#fff; z-index:1000; padding:8px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.06);">
 
 
-</div>
 
-  <!--//NIFTY = 256265
-  //SENSEX = 265
- 
-
-  //RELIANCE=738561
-  //HDFCBANK=341249
-  //ICICIBANK=1270529
-  //SBIN = 779521
-  //INFY = 408065-->
-
-
-<div class="controls" style="text-align:center; margin:12px 0; position:sticky; top:0; background:#fff; z-index:1000; padding:8px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.06);">
     <label style="margin-right:8px">Select Instrument:</label>
     <select [(ngModel)]="instrument" (ngModelChange)="onInstrumentChange($event)">
         <option value="265">SENSEX</option>
@@ -39,10 +16,13 @@
         <option value="408065">INFY</option>
 
     </select>
-        <button style="margin-left:12px; padding:6px 12px; cursor:pointer;" (click)="fetchData()" [disabled]="isLoading">
-            <span *ngIf="!isLoading">Refresh</span>
-            <span *ngIf="isLoading">Refreshing...</span>
-        </button>
+    <button style="margin-left:12px; padding:6px 12px; cursor:pointer;" (click)="fetchData()" [disabled]="isLoading">
+        <span *ngIf="!isLoading">Refresh</span>
+        <span *ngIf="isLoading">Refreshing...</span>
+    </button>
+
+    <div>{{currtime}}</div>
+
 </div>
 
 <div class="grid chart-container">
@@ -200,6 +180,6 @@
     <span style="text-align:center"> {{ name[50] }}
         <canvas id="MyChart50">{{ chart[50] }}</canvas>
     </span>
-   
+
 
 </div>

@@ -41,6 +41,8 @@ export class FuturesComponent implements OnInit, OnDestroy {
   instrument: string = '265';
   public isLoading: boolean = false;
 
+  currtime: string = new Date().toLocaleTimeString();
+
   onInstrumentChange($event: any) {
  
     // this.chart=[];
@@ -53,8 +55,8 @@ export class FuturesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
    
 this.fetchData();
-    // call fetchData every 30 seconds
-    this.fetchInterval = setInterval(() => this.fetchData(), 30000);
+    // call fetchData every 20 seconds
+    this.fetchInterval = setInterval(() => this.fetchData(), 20000);
   }
 
   ngOnDestroy(): void {
@@ -66,7 +68,7 @@ this.fetchData();
 
   fetchData() {
     this.isLoading = true;
-
+    this.currtime = new Date().toLocaleTimeString();
     this.futuresService.getData(this.instrument).subscribe(
       (res:any) => {
         this.data=res;
