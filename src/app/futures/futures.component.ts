@@ -38,7 +38,7 @@ export class FuturesComponent implements OnInit, OnDestroy {
   dat: any;
   data: ZData[] = [];
   size:number=0;
-  instrument: string = '265';
+  instrument: string = '256265';
   public isLoading: boolean = false;
 
   currtime: string = new Date().toLocaleTimeString();
