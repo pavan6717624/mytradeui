@@ -45,7 +45,7 @@ export class FuturesService {
 
 
   getData(instrument: string) {
-    return this.http.get('https://pavan-jolly-418fae2030c9.herokuapp.com//ZERODHA/getData?instrument='+instrument) 
+    return this.http.get('https://pavan-jolly-418fae2030c9.herokuapp.com/ZERODHA/getData?instrument='+instrument) 
   }
 
   checkData() {

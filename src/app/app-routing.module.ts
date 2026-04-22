@@ -6,8 +6,8 @@ import { AmazonComponent } from './amazon/amazon.component';
 
 const routes: Routes = [
 
-    {path:'',component:ChartComponent},
-    {path:'futures',component:FuturesComponent},
+    {path:'',component:FuturesComponent},
+    {path:'chart',component:ChartComponent},
     {path:'amazon',component:AmazonComponent},
 
 ];
