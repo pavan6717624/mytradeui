@@ -55,8 +55,8 @@ export class FuturesComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
    
 this.fetchData();
-    // call fetchData every 20 seconds
-    this.fetchInterval = setInterval(() => this.fetchData(), 20000);
+    // call fetchData every 60 seconds
+    this.fetchInterval = setInterval(() => this.fetchData(), 60000);
   }
 
   ngOnDestroy(): void {
