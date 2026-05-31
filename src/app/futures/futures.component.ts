@@ -95,12 +95,24 @@ this.fetchData();
                 title: {
                     display: true,
                     text: this.data[i].price+"",
-                    
                     padding: {
                         top: 10,
                         bottom: 30
                     }
                 }
+            },
+            scales: {
+              y: {
+                type: 'linear',
+                position: 'left'
+              },
+              y1: {
+                type: 'linear',
+                position: 'right',
+                grid: {
+                  drawOnChartArea: false
+                }
+              }
             }
           },
     
@@ -110,13 +122,37 @@ this.fetchData();
               {
                 label: "CE",
                 data: this.data[i].oi,
-                backgroundColor: 'blue'
+                backgroundColor: 'blue',
+                yAxisID: 'y'
               },
               {
                 label: "PE",
                 data: this.data[i+1].oi,
-                backgroundColor: 'red'
+                backgroundColor: 'red',
+                yAxisID: 'y'
               }  ,
+              {
+                label: "CE Price",
+                data: this.data[i].close,
+                borderColor: 'green',
+                backgroundColor: 'rgba(0,128,0,0.1)',
+                fill: false,
+                pointRadius: 2,
+                tension: 0.1
+                ,
+                yAxisID: 'y1'
+              },
+               {
+                label: "PE Price",
+                data: this.data[i+1].close,
+                borderColor: 'orange',
+                backgroundColor: 'rgba(0,128,0,0.1)',
+                fill: false,
+                pointRadius: 2,
+                tension: 0.1
+                ,
+                yAxisID: 'y1'
+              },
             ]
           },
         
