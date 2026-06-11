@@ -13,7 +13,7 @@ class ZData
   price: number=0;
 	instrument: number=0;
 	call: string='';
-	
+	lastPrice: number=0;
 	close:number[]=[];
    open:number[]=[];
    high:number[]=[];
@@ -75,7 +75,7 @@ this.fetchData();
         this.data=res;
         this.size=this.data.length;
         // set lastPrice from API response (use first element if present)
-        this.lastPrice = (this.data && this.data.length>0) ? this.data[0].price : null;
+        this.lastPrice = (this.data && this.data.length>0) ? this.data[0].lastPrice : null;
         console.log(JSON.stringify(this.data)+" "+this.data.length);
 
        for(var i=0;i<this.data.length;i+=2)
