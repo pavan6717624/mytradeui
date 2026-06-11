@@ -16,6 +16,7 @@
         <option value="408065">INFY</option>
 
     </select>
+    <span style="margin-left:12px; font-weight:600">Last: {{ lastPrice !== null ? (lastPrice | number:'1.2-2') : '—' }}</span>
     <button style="margin-left:12px; padding:6px 12px; cursor:pointer;" (click)="fetchData()" [disabled]="isLoading">
         <span *ngIf="!isLoading">Refresh</span>
         <span *ngIf="isLoading">Refreshing...</span>

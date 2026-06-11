@@ -40,6 +40,7 @@ export class FuturesComponent implements OnInit, OnDestroy {
   size:number=0;
   instrument: string = '256265';
   public isLoading: boolean = false;
+  public lastPrice: number | null = null;
 
   currtime: string = new Date().toLocaleTimeString();
 
@@ -73,6 +74,8 @@ this.fetchData();
       (res:any) => {
         this.data=res;
         this.size=this.data.length;
+        // set lastPrice from API response (use first element if present)
+        this.lastPrice = (this.data && this.data.length>0) ? this.data[0].price : null;
         console.log(JSON.stringify(this.data)+" "+this.data.length);
 
        for(var i=0;i<this.data.length;i+=2)
