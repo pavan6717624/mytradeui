@@ -17,7 +17,10 @@
 
     </select>
     <span style="margin-left:12px; font-weight:600">Last: {{ lastPrice !== null ? (lastPrice | number:'1.2-2') : '—' }}</span>
-    <button style="margin-left:12px; padding:6px 12px; cursor:pointer;" (click)="fetchData()" [disabled]="isLoading">
+     <span style="margin-left:12px; font-weight:600; margin-left:8px">PE Max OI Price: {{ maxPEPrice | number:'1.2-2' }}</span>
+    <span style="margin-left:12px; font-weight:600; margin-left:8px">CE Max OI Price: {{ maxCEPrice | number:'1.2-2' }}</span>
+   
+     <button style="margin-left:12px; padding:6px 12px; cursor:pointer;" (click)="fetchData()" [disabled]="isLoading">
         <span *ngIf="!isLoading">Refresh</span>
         <span *ngIf="isLoading">Refreshing...</span>
     </button>

@@ -66,7 +66,10 @@ this.fetchData();
     }
   }
 
-
+  maxCEPrice:number=0;
+  maxCE:number=0;
+   maxPEPrice:number=0;
+    maxPE:number=0;
   fetchData() {
     this.isLoading = true;
     this.currtime = new Date().toLocaleTimeString();
@@ -77,7 +80,7 @@ this.fetchData();
         // set lastPrice from API response (use first element if present)
         this.lastPrice = (this.data && this.data.length>0) ? this.data[0].lastPrice : null;
         console.log(JSON.stringify(this.data)+" "+this.data.length);
-
+       
        for(var i=0;i<this.data.length;i+=2)
         {
          this.name[i]=this.data[i].price+"";
@@ -88,6 +91,18 @@ this.fetchData();
           } catch (e) {
             console.warn('Error destroying existing chart at index', i, e);
           }
+        }
+
+        if(this.data[i].oi[this.data[i].oi.length-1]>this.maxCE)
+        {
+          this.maxCE=this.data[i].oi[this.data[i].oi.length-1];
+          this.maxCEPrice=this.data[i].price;
+        }
+
+        if(this.data[i+1].oi[this.data[i+1].oi.length-1]>this.maxPE)
+        {
+          this.maxPE=this.data[i+1].oi[this.data[i+1].oi.length-1];
+          this.maxPEPrice=this.data[i+1].price;
         }
 
         this.chart[i] = new Chart("MyChart"+i, {
